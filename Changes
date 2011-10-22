@@ -1,0 +1,12 @@
+Revision history for Perl program tkquiz.pl.
+
+1.03  Mon Jun 16 00:19:15 2008
+	- minor changes, fixed email and version string
+
+1.02  Tue Jun  3 20:16:23 2008
+	- ran through perltidy and perlcritic
+
+1.01  Sun Jun  1 19:58:22 2008
+	- original version; created by h2xs 1.23 with options
+		-AX tkquiz
+

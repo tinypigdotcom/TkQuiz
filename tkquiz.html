@@ -1,0 +1,151 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>tkquiz.pl - A simple quiz program</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:rurban@x-ray.at" />
+</head>
+
+<body style="background-color: white">
+
+<p><a name="__index__"></a></p>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#question_answer_files">QUESTION/ANSWER FILES</a></li>
+	<ul>
+
+		<li><a href="#variables">VARIABLES</a></li>
+	</ul>
+
+	<li><a href="#using_tkquiz_pl">USING tkquiz.pl</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+	<li><a href="#author">AUTHOR</a></li>
+	<li><a href="#copyright_and_license">COPYRIGHT AND LICENSE</a></li>
+</ul>
+<!-- INDEX END -->
+
+<hr />
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>tkquiz.pl - A simple quiz program</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+  tkquiz.pl</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p><strong>tkquiz.pl</strong> is a simple but flexible quiz program meant to take the place of
+paper flash cards for memorization exercises during study.  You provide a file
+with a set of questions and answers, and <strong>tkquiz.pl</strong> will present you with the
+questions, prompt you for answers, and check and tally your correct answers.</p>
+<p>
+</p>
+<hr />
+<h1><a name="question_answer_files">QUESTION/ANSWER FILES</a></h1>
+<p>Creating question/answer files for use with tkquiz is easy using an editor
+such as <strong>Notepad</strong>.  Files should have an extension of <em>.qs</em> (for Question
+Set), but this is not a requirement.</p>
+<p>The basic format for a question/answer pair is a question, followed by a
+question mark, followed by an answer.  Two newlines in a row indicate the
+start of the next question/answer pair.  This is so you can have a question or
+answer with multiple lines if desired.  Here is an example file:</p>
+<pre>
+    What shape has 4 sides of equal length and 4 right angles? square</pre>
+<pre>
+    How many sides does a triangle have? 3</pre>
+<pre>
+    Who was the first President of the United States? George Washington</pre>
+<p>Answers with all lowercase characters are case-insensitive.  This means that
+in the above example, you may answer ``square'', ``Square'', or ``SQUARE'' as the
+answer to the first question, and it will be counted as a correct answer.</p>
+<p>An answer with at least one uppercase character will be considered
+case-sensitive.  When answering the third question in the above example, an
+answer of ``george washington'' will not be acceptable.  Only an answer of
+``George Washington'' will be counted correct.</p>
+<p>Multiple-choice question/answers are possible as well.  They should appear in
+the file as follows:</p>
+<pre>
+    Who was the first President of the United States?
+    A) George Washington
+    B) John Adams
+    C) Ben Franklin
+    D) Michael J. Nelson
+    E) Norman Rockwell</pre>
+<p>The correct answer must be option A in the file.  <strong>tkquiz.pl</strong> will scramble
+the options each time the question is asked.  Options from A all the way to Z
+can be specified if desired.</p>
+<p>
+</p>
+<h2><a name="variables">VARIABLES</a></h2>
+<p>It is possible to include variable text in your question/answer file.  This is
+useful for repeated text in questions.  An example file:</p>
+<pre>
+    +sides=How many sides does a</pre>
+<pre>
+    +{sides} triangle have? 3</pre>
+<pre>
+    +{sides} square have? 4</pre>
+<pre>
+    +{sides} pentagon have? 5</pre>
+<p>The first line, beginning <code>+sides=</code> assigns the text ``How many sides does a''
+to the variable <code>sides</code>.  Each subsequent line includes the text into the
+question by including the expression <code>+{sides}</code>.  This results in the
+following question/answer pairs:</p>
+<pre>
+    How many sides does a triangle have? 3</pre>
+<pre>
+    How many sides does a square have? 4</pre>
+<pre>
+    How many sides does a pentagon have? 5</pre>
+<p>
+</p>
+<hr />
+<h1><a name="using_tkquiz_pl">USING tkquiz.pl</a></h1>
+<p>Once your file has been saved, run <strong>tkquiz.pl</strong>.  Select <code>File</code>, then <code>Open
+Question Set</code> and select your file.  The first question will be presented to
+you.  Type the answer and press <code>Enter</code>.  <strong>tkquiz.pl</strong> will let you know if
+the answer is correct, and the tally and percentage correct will be updated
+accordingly.</p>
+<p>Alternatively, to save yourself a lot of typing, you can just say the answer
+to yourself and press <code>Enter</code>.  <strong>tkquiz.pl</strong> will show you the correct answer
+and ask you if you were correct.  This is also useful for foreign language
+study, where you might want to practice saying a word as well as writing it.</p>
+<p>If you use this alternative method, pressing <code>Enter</code> or <code>y</code> will indicate a
+correct answer, while pressing <code>n</code> will indicate an incorrect answer.  It
+should never be necessary to use the mouse while running <strong>tkquiz.pl</strong>.</p>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p>The files <em>example.qs</em> and <em>example_with_variables.qs</em> which are included in
+this distribution, for examples of how a question/answer file is built.</p>
+<p>Visit <a href="http://www.tinypig.com">http://www.tinypig.com</a> for
+other <em>tinypig</em> software and support.</p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>David Bradford, &lt;<a href="mailto:davembradford@gmail.com">davembradford@gmail.com</a>&gt;</p>
+<p>
+</p>
+<hr />
+<h1><a name="copyright_and_license">COPYRIGHT AND LICENSE</a></h1>
+<p>Copyright (C) 2008 by David Bradford</p>
+<p>This program is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself, either Perl version 5.8.8 or,
+at your option, any later version of Perl 5 you may have available.</p>
+
+</body>
+
+</html>
