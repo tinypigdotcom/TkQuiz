@@ -1,0 +1,118 @@
+=head1 NAME
+
+tkquiz.pl - A simple quiz program
+
+=head1 SYNOPSIS
+
+  tkquiz.pl
+
+=head1 DESCRIPTION
+
+B<tkquiz.pl> is a simple but flexible quiz program meant to take the place of
+paper flash cards for memorization exercises during study.  You provide a file
+with a set of questions and answers, and B<tkquiz.pl> will present you with the
+questions, prompt you for answers, and check and tally your correct answers.
+
+=head1 QUESTION/ANSWER FILES
+
+Creating question/answer files for use with tkquiz is easy using an editor
+such as B<Notepad>.  Files should have an extension of F<.qs> (for Question
+Set), but this is not a requirement.
+
+The basic format for a question/answer pair is a question, followed by a
+question mark, followed by an answer.  Two newlines in a row indicate the
+start of the next question/answer pair.  This is so you can have a question or
+answer with multiple lines if desired.  Here is an example file:
+
+    What shape has 4 sides of equal length and 4 right angles? square
+
+    How many sides does a triangle have? 3
+
+    Who was the first President of the United States? George Washington
+
+Answers with all lowercase characters are case-insensitive.  This means that
+in the above example, you may answer "square", "Square", or "SQUARE" as the
+answer to the first question, and it will be counted as a correct answer.
+
+An answer with at least one uppercase character will be considered
+case-sensitive.  When answering the third question in the above example, an
+answer of "george washington" will not be acceptable.  Only an answer of
+"George Washington" will be counted correct.
+
+Multiple-choice question/answers are possible as well.  They should appear in
+the file as follows:
+
+    Who was the first President of the United States?
+    A) George Washington
+    B) John Adams
+    C) Ben Franklin
+    D) Michael J. Nelson
+    E) Norman Rockwell
+
+The correct answer must be option A in the file.  B<tkquiz.pl> will scramble
+the options each time the question is asked.  Options from A all the way to Z
+can be specified if desired.
+
+=head2 VARIABLES
+
+It is possible to include variable text in your question/answer file.  This is
+useful for repeated text in questions.  An example file:
+
+    +sides=How many sides does a
+
+    +{sides} triangle have? 3
+
+    +{sides} square have? 4
+
+    +{sides} pentagon have? 5
+
+The first line, beginning C<+sides=> assigns the text "How many sides does a"
+to the variable C<sides>.  Each subsequent line includes the text into the
+question by including the expression C<+{sides}>.  This results in the
+following question/answer pairs:
+
+    How many sides does a triangle have? 3
+
+    How many sides does a square have? 4
+
+    How many sides does a pentagon have? 5
+
+=head1 USING tkquiz.pl
+
+Once your file has been saved, run B<tkquiz.pl>.  Select C<File>, then C<Open
+Question Set> and select your file.  The first question will be presented to
+you.  Type the answer and press C<Enter>.  B<tkquiz.pl> will let you know if
+the answer is correct, and the tally and percentage correct will be updated
+accordingly.
+
+Alternatively, to save yourself a lot of typing, you can just say the answer
+to yourself and press C<Enter>.  B<tkquiz.pl> will show you the correct answer
+and ask you if you were correct.  This is also useful for foreign language
+study, where you might want to practice saying a word as well as writing it.
+
+If you use this alternative method, pressing C<Enter> or C<y> will indicate a
+correct answer, while pressing C<n> will indicate an incorrect answer.  It
+should never be necessary to use the mouse while running B<tkquiz.pl>.
+
+=head1 SEE ALSO
+
+The files F<example.qs> and F<example_with_variables.qs> which are included in
+this distribution, for examples of how a question/answer file is built.
+
+Visit L<http://www.tinypig.com> for
+other I<tinypig> software and support.
+
+=head1 AUTHOR
+
+David Bradford, E<lt>davembradford@gmail.comE<gt>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright (C) 2008 by David Bradford
+
+This program is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself, either Perl version 5.8.8 or,
+at your option, any later version of Perl 5 you may have available.
+
+
+=cut
